@@ -16,6 +16,23 @@ const Form = () => {
     });
   };
 
+  const saveImage = (files: FileList | null) => {
+    const reader = new FileReader();
+
+    if (files !== null && files !== undefined) {
+      const file = files[0];
+
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = reader.result;
+        if (typeof base64 === "string") {
+          setFormData((prevData) => {
+            return { ...prevData, selectedFile: base64 };
+          });
+        }
+      };
+    }
+  };
   const clearData = () => {
     setFormData({
       creator: "",
@@ -70,8 +87,8 @@ const Form = () => {
         <input
           type="file"
           className="shadow appearance-none border file:border-none file:bg-blue-400 file:py-2 file:px-3 file:text-white file:rounded-[8px] mt-5 rounded w-[80%] py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-          // value={formData.tags}
-          // onChange={(e) => changeFormData(e.target.value, "tags")}
+          accept="image/*"
+          onChange={(e) => saveImage(e.target.files)}
         />
 
         <button className="w-[90%] bg-blue-400 text-white py-2 px-3 rounded-[8px] mt-5 text-lg">
