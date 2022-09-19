@@ -1,12 +1,15 @@
-import { Dispatch } from "redux";
+import { PostActionsProps } from "../../interfaces/postActionsInterface";
 
-export const postActionAll = () => async (dispath: Dispatch) => {
-  try {
-  } catch (err) {}
+export const postActionAll = (payload: PostActionsProps[]) => {
+  return {
+    type: "FETCH_ALL",
+    payload,
+  };
 };
 
-export const postActionCreate = () => {
+export const postActionCreate = (payload: PostActionsProps) => {
   return {
     type: "CREATE",
+    payload,
   };
 };

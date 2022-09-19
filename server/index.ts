@@ -12,12 +12,16 @@ const DB = process.env.DATABASE!.replace("<PASSWORD>", process.env.PASSWORD!);
 
 const app = express();
 
-app.use("/posts", postRoutes);
-
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+
+app.use("/posts", postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
