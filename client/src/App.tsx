@@ -18,11 +18,11 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-full h-[100vh]  bg-gradient-to-r from-cyan-200 to-blue-300">
+    <div className="w-full min-h-[100vh] pb-20 bg-gradient-to-r from-cyan-200 to-blue-300">
       <Navbar />
-      <div className="w-[80%] flex justify-between m-auto">
-        <Posts />
+      <div className="w-[80%] gap-10 flex sm:flex-row flex-col sm:justify-between sm:items-start items-center m-auto">
         <Form />
+        <Posts />
       </div>
     </div>
   );

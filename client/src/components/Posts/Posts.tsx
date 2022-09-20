@@ -13,7 +13,7 @@ const Posts = () => {
   ) : (
     <div className="w-full">
       <h1 className="text-4xl">Posts</h1>
-      <div className="mt-5 flex justify-center flex-wrap gap-10">
+      <div className="mt-5 flex sm:justify-start justify-center flex-wrap gap-10">
         {posts.map((post) => (
           <Post key={post._id} post={post} />
         ))}

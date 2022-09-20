@@ -64,14 +64,12 @@ const Form = () => {
   };
 
   return (
-    <div className="min-w-[270px] bg-gray-50 w-[30%] rounded-[8px] pb-10 pt-5 flex flex-col items-center">
+    <div className="min-w-[270px] h-[550px] bg-gray-50 w-[30%] rounded-[8px] pb-10 pt-5 flex flex-col items-center">
       <form
         className="flex flex-col items-center w-full"
         onSubmit={(e) => handleSubmit(e)}
       >
-        <h1 className="font-bold sm:text-xl text-sm text-center">
-          Creating a Memory
-        </h1>
+        <h1 className="font-bold text-xl text-center">Creating a Memory</h1>
         <input
           type="text"
           placeholder="Creator"
