@@ -50,9 +50,17 @@ const Form = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await api.createPost(formData);
+    const some = await api.createPost(formData);
 
-    dispatch(postActionCreate(formData));
+    dispatch(postActionCreate(some.data.data.newPost));
+
+    setFormData({
+      creator: "",
+      title: "",
+      message: "",
+      selectedFile: "",
+      tags: "",
+    });
   };
 
   return (

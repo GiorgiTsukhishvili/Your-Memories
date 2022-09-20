@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import PostMessage from "../models/postMessage";
 
 export const getPosts = async (req: Request, res: Response) => {
@@ -20,6 +21,26 @@ export const getPosts = async (req: Request, res: Response) => {
 export const createPost = async (req: Request, res: Response) => {
   try {
     const newPost = await PostMessage.create(req.body);
+
+    res.status(200).json({
+      type: "success",
+      data: { newPost },
+    });
+  } catch (err) {
+    res.status(404).json({
+      type: "fail",
+      message: err,
+    });
+  }
+};
+
+export const updatePostLike = async (req: Request, res: Response) => {
+  const { id: _id } = req.params;
+
+  try {
+    const newPost = await PostMessage.findByIdAndUpdate(req.params.id, {
+      likeCount: +req.body.likeCount,
+    });
 
     res.status(200).json({
       type: "success",

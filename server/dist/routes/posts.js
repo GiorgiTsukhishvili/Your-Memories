@@ -7,4 +7,5 @@ const express_1 = __importDefault(require("express"));
 const posts_1 = require("./../controllers/posts");
 const router = express_1.default.Router();
 router.route("/").get(posts_1.getPosts).post(posts_1.createPost);
+router.route("/:id").patch(posts_1.updatePostLike);
 exports.default = router;

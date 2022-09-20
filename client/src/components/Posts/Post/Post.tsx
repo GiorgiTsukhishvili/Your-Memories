@@ -2,9 +2,21 @@ import React from "react";
 import { PostActionsProps } from "../../../interfaces/postActionsInterface";
 import { AiOutlineLike } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
+import * as api from "./../../../api/index";
+import { useDispatch } from "react-redux";
+import { postActionUpdate } from "../../../redux/actions/postActions";
 
 const Post = ({ post }: { post: PostActionsProps }) => {
-  console.log(post.title);
+  const dispatch = useDispatch();
+
+  const updateLike = async () => {
+    await api.updateLike(post._id!, {
+      likeCount: (post.likeCount! + 1).toString(),
+    });
+
+    dispatch(postActionUpdate(post));
+  };
+
   return (
     <div className="relative">
       <img
@@ -18,7 +30,10 @@ const Post = ({ post }: { post: PostActionsProps }) => {
 
         <div className="flex justify-between px-5 py-3 ">
           <div className="flex gap-2 items-center">
-            <AiOutlineLike className="text-xl cursor-pointer text-blue-600" />
+            <AiOutlineLike
+              className="text-xl cursor-pointer text-blue-600"
+              onClick={updateLike}
+            />
             <h1 className="text-xl">{post.likeCount}</h1>
           </div>
           <BsTrash className="text-xl cursor-pointer text-blue-600" />

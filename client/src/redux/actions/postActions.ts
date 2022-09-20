@@ -13,3 +13,10 @@ export const postActionCreate = (payload: PostActionsProps) => {
     payload: [payload],
   };
 };
+
+export const postActionUpdate = (payload: PostActionsProps) => {
+  return {
+    type: "UPDATE",
+    payload: [payload],
+  };
+};

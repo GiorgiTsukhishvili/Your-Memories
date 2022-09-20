@@ -10,6 +10,12 @@ const postReducer = (
       return action.payload;
     case "CREATE":
       return [...state, ...action.payload];
+    case "UPDATE":
+      return state.map((item) =>
+        item._id === action.payload[0]._id
+          ? { ...item, likeCount: item.likeCount! + 1 }
+          : item
+      );
     default:
       return state;
   }
