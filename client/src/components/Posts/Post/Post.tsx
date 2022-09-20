@@ -4,7 +4,10 @@ import { AiOutlineLike } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import * as api from "./../../../api/index";
 import { useDispatch } from "react-redux";
-import { postActionUpdate } from "../../../redux/actions/postActions";
+import {
+  postActionUpdate,
+  deleteActionPost,
+} from "../../../redux/actions/postActions";
 import moment from "moment";
 
 const Post = ({ post }: { post: PostActionsProps }) => {
@@ -16,6 +19,12 @@ const Post = ({ post }: { post: PostActionsProps }) => {
     });
 
     dispatch(postActionUpdate(post));
+  };
+
+  const deletePost = async () => {
+    await api.deletePost(post._id!);
+
+    dispatch(deleteActionPost(post));
   };
 
   return (
@@ -37,7 +46,10 @@ const Post = ({ post }: { post: PostActionsProps }) => {
             />
             <h1 className="text-xl">{post.likeCount}</h1>
           </div>
-          <BsTrash className="text-xl cursor-pointer text-blue-600" />
+          <BsTrash
+            className="text-xl cursor-pointer text-blue-600"
+            onClick={deletePost}
+          />
         </div>
       </div>
 

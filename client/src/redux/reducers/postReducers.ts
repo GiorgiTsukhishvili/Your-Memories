@@ -16,6 +16,8 @@ const postReducer = (
           ? { ...item, likeCount: item.likeCount! + 1 }
           : item
       );
+    case "DELETE":
+      return state.filter((item) => item._id !== action.payload[0]._id);
     default:
       return state;
   }

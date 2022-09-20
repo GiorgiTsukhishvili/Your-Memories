@@ -53,3 +53,19 @@ export const updatePostLike = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const deletePost = async (req: Request, res: Response) => {
+  try {
+    await PostMessage.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      type: "success",
+      data: null,
+    });
+  } catch (err) {
+    res.status(404).json({
+      type: "fail",
+      message: err,
+    });
+  }
+};

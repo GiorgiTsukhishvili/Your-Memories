@@ -20,3 +20,10 @@ export const postActionUpdate = (payload: PostActionsProps) => {
     payload: [payload],
   };
 };
+
+export const deleteActionPost = (payload: PostActionsProps) => {
+  return {
+    type: "DELETE",
+    payload: [payload],
+  };
+};

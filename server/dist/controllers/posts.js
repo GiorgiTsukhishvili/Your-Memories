@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updatePostLike = exports.createPost = exports.getPosts = void 0;
+exports.deletePost = exports.updatePostLike = exports.createPost = exports.getPosts = void 0;
 const postMessage_1 = __importDefault(require("../models/postMessage"));
 const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -65,3 +65,19 @@ const updatePostLike = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.updatePostLike = updatePostLike;
+const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield postMessage_1.default.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            type: "success",
+            data: null,
+        });
+    }
+    catch (err) {
+        res.status(404).json({
+            type: "fail",
+            message: err,
+        });
+    }
+});
+exports.deletePost = deletePost;

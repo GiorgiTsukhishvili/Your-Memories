@@ -9,3 +9,6 @@ export const createPost = (newPost: PostActionsProps) =>
 
 export const updateLike = (id: string, like: { likeCount: string }) =>
   axios.patch(`http://localhost:5000/posts/${id}`, like);
+
+export const deletePost = (id: string) =>
+  axios.delete(`http://localhost:5000/posts/${id}`);
