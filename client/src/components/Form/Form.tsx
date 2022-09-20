@@ -56,7 +56,7 @@ const Form = () => {
   };
 
   return (
-    <div className=" bg-gray-50 w-[30%] rounded-[8px] pb-10 pt-5 flex flex-col items-center">
+    <div className="min-w-[270px] bg-gray-50 w-[30%] rounded-[8px] pb-10 pt-5 flex flex-col items-center">
       <form
         className="flex flex-col items-center w-full"
         onSubmit={(e) => handleSubmit(e)}
