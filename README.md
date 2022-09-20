@@ -21,4 +21,4 @@ Package.json is also provided.
 
 ## Images From Project
 
-![1](https://user-images.githubusercontent.com/104715456/191314657-12219a54-31c6-42b8-963d-fc4510d1c6cb.PNG)
+![1](https://user-images.githubusercontent.com/104715456/191315025-c1e53a37-5c79-432e-adb4-864aa4f395a7.PNG)
