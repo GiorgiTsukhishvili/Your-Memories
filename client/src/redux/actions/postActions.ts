@@ -10,6 +10,6 @@ export const postActionAll = (payload: PostActionsProps[]) => {
 export const postActionCreate = (payload: PostActionsProps) => {
   return {
     type: "CREATE",
-    payload,
+    payload: [payload],
   };
 };

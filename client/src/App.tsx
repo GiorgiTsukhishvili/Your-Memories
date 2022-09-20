@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await api.fetchPosts();
-      dispatch(postActionAll(data));
+      dispatch(postActionAll(data.data.posts));
     };
     fetchData();
   }, [dispatch]);
