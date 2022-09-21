@@ -5,11 +5,14 @@ import {
 } from "../../../interfaces/updatePostsInterface";
 import { MdCloseFullscreen } from "react-icons/md";
 import * as api from "./../../../api";
+import { useDispatch } from "react-redux";
+import { updateWholeAction } from "../../../redux/actions/postActions";
 
 const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
   const [formData, setFormData] = useState<UpdatePostState>({
     ...post,
   });
+  const dispatch = useDispatch();
 
   const changeFormData = (data: string, toChange: string) => {
     setFormData((prevData) => {
@@ -19,8 +22,13 @@ const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const some = await api.createPost(formData);
+    await api.updateWhole(post._id!, formData);
+
+    dispatch(updateWholeAction(formData));
+    console.log(1);
   };
+
+  console.log(formData);
 
   return (
     <Fragment>
@@ -38,7 +46,7 @@ const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
             type="text"
             placeholder="Creator"
             className="shadow appearance-none border mt-5 rounded w-[80%] py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-            value={post.creator}
+            value={formData.creator}
             onChange={(e) => changeFormData(e.target.value, "creator")}
             required
           />
@@ -46,7 +54,7 @@ const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
             type="text"
             placeholder="Title"
             className="shadow appearance-none border mt-5 rounded w-[80%] py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-            value={post.title}
+            value={formData.title}
             onChange={(e) => changeFormData(e.target.value, "title")}
             required
           />
@@ -54,7 +62,7 @@ const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
             type="text"
             placeholder="Message"
             className="shadow appearance-none border mt-5 rounded w-[80%] py-2 px-3 pb-10 text-black leading-tight focus:outline-none focus:shadow-outline"
-            value={post.message}
+            value={formData.message}
             onChange={(e) => changeFormData(e.target.value, "message")}
             required
           />
@@ -62,7 +70,7 @@ const UpdatePost = ({ post, toggle }: UpdatePostsProps) => {
             type="text"
             placeholder="Tags (Separate By Comas)"
             className="shadow appearance-none border mt-5 rounded w-[80%] py-2 px-3  text-black leading-tight focus:outline-none focus:shadow-outline"
-            value={post.tags}
+            value={formData.tags}
             onChange={(e) => changeFormData(e.target.value, "tags")}
             required
           />

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PostActionsProps } from "../interfaces/postActionsInterface";
+import { UpdatePostState } from "../interfaces/updatePostsInterface";
 
 const url = "http://localhost:5000/posts";
 
@@ -12,3 +13,6 @@ export const updateLike = (id: string, like: { likeCount: string }) =>
 
 export const deletePost = (id: string) =>
   axios.delete(`http://localhost:5000/posts/${id}`);
+
+export const updateWhole = (id: string, post: UpdatePostState) =>
+  axios.patch(`http://localhost:5000/posts/${id}`, post);

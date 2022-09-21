@@ -27,3 +27,10 @@ export const deleteActionPost = (payload: PostActionsProps) => {
     payload: [payload],
   };
 };
+
+export const updateWholeAction = (payload: PostActionsProps) => {
+  return {
+    type: "UPDATE_WHOLE",
+    payload: [payload],
+  };
+};

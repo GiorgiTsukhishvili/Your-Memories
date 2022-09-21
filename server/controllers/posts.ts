@@ -35,12 +35,16 @@ export const createPost = async (req: Request, res: Response) => {
 };
 
 export const updatePostLike = async (req: Request, res: Response) => {
-  const { id: _id } = req.params;
-
   try {
-    const newPost = await PostMessage.findByIdAndUpdate(req.params.id, {
-      likeCount: +req.body.likeCount,
-    });
+    let newPost;
+
+    if (req.body.likeCount) {
+      newPost = await PostMessage.findByIdAndUpdate(req.params.id, {
+        likeCount: +req.body.likeCount,
+      });
+    } else {
+      newPost = await PostMessage.findByIdAndUpdate(req.params.id, req.body);
+    }
 
     res.status(200).json({
       type: "success",
