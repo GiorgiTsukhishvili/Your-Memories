@@ -6,6 +6,5 @@ export interface PostActionsProps {
   selectedFile: string;
   likeCount?: number;
   createdAt?: Date;
-  __v?: string;
   _id?: string;
 }
