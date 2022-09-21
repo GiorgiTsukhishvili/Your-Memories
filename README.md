@@ -5,6 +5,7 @@ This is MERN application made by using **React**, **Node.js** and **TypeScript**
 - Add memories by filling out the form
 - Like memories 
 - Delete memories 
+- Update memories
 
 Package.json is also provided.
 
@@ -21,4 +22,6 @@ Package.json is also provided.
 
 ## Images From Project
 
-![1](https://user-images.githubusercontent.com/104715456/191315025-c1e53a37-5c79-432e-adb4-864aa4f395a7.PNG)
+![1](https://user-images.githubusercontent.com/104715456/191493899-d41fb3e4-5e83-46a6-95ad-0dcabfec102c.PNG)
+
+![2](https://user-images.githubusercontent.com/104715456/191493911-bc6d9f94-08ed-4ede-b40c-b1248d471fd4.PNG)
