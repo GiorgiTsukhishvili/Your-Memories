@@ -74,7 +74,7 @@ const Post = ({ post }: { post: PostActionsProps }) => {
         />
       </div>
 
-      {toggle && post._id && <UpdatePost id={post._id} />}
+      {toggle && post._id && <UpdatePost post={post} toggle={doToggle} />}
     </div>
   );
 };
