@@ -13,13 +13,13 @@ const Form = () => {
     tags: "",
   });
 
+  const dispatch = useDispatch();
+
   const changeFormData = (data: string, toChange: string) => {
     setFormData((prevData) => {
       return { ...prevData, [toChange]: data };
     });
   };
-
-  const dispatch = useDispatch();
 
   const saveImage = (files: FileList | null) => {
     const reader = new FileReader();

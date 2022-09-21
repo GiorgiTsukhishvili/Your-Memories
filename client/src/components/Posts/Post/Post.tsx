@@ -2,15 +2,20 @@ import React from "react";
 import { PostActionsProps } from "../../../interfaces/postActionsInterface";
 import { AiOutlineLike } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
+import { FiEdit3 } from "react-icons/fi";
 import * as api from "./../../../api/index";
 import { useDispatch } from "react-redux";
 import {
   postActionUpdate,
   deleteActionPost,
 } from "../../../redux/actions/postActions";
+import useToggle from "../../../hooks/useToggle";
 import moment from "moment";
+import UpdatePost from "../updatePost/UpdatePost";
 
 const Post = ({ post }: { post: PostActionsProps }) => {
+  const { toggle, doToggle } = useToggle();
+
   const dispatch = useDispatch();
 
   const updateLike = async () => {
@@ -63,7 +68,13 @@ const Post = ({ post }: { post: PostActionsProps }) => {
             Created {moment(post.createdAt).fromNow()}
           </h1>
         )}
+        <FiEdit3
+          className="absolute top-3 right-3 text-white text-2xl cursor-pointer"
+          onClick={() => doToggle()}
+        />
       </div>
+
+      {toggle && post._id && <UpdatePost post={post} toggle={doToggle} />}
     </div>
   );
 };

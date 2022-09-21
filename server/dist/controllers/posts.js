@@ -47,11 +47,16 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.createPost = createPost;
 const updatePostLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id: _id } = req.params;
     try {
-        const newPost = yield postMessage_1.default.findByIdAndUpdate(req.params.id, {
-            likeCount: +req.body.likeCount,
-        });
+        let newPost;
+        if (req.body.likeCount) {
+            newPost = yield postMessage_1.default.findByIdAndUpdate(req.params.id, {
+                likeCount: +req.body.likeCount,
+            });
+        }
+        else {
+            newPost = yield postMessage_1.default.findByIdAndUpdate(req.params.id, req.body);
+        }
         res.status(200).json({
             type: "success",
             data: { newPost },
